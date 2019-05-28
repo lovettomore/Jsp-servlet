@@ -55,11 +55,51 @@
 						-->
 						<div class="text-center">
 							<ul class="pagination">
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
+								<%
+									PageVO pageVO = (PageVO)request.getAttribute("pageVO");
+									if(pageVO.getPage() == 1){
+								%>
+									<li class="disabled"><span>«</span></li>
+								<% }else{ %>
+									<li>
+										<a href="<%=request.getContextPath()%>/userPagingList?page=<%=pageVO.getPage()-1%>&pageSize=<%=pageVO.getPageSize()%>">«</a>
+									</li>
+								<% 
+									} 
+									
+									int paginationSize = (Integer)request.getAttribute("paginationSize");
+									for(int i=1; i<paginationSize+1; i++){
+								%>
+								
+								<!-- 
+									내가 현재 어떤 페이지에 있는지 어떻게 알 수 있지?
+									pageVO에 있어요. page와 pageSize를 이용해서 pageVO를 만들어용.
+								-->
+
+								<li 
+									<% if(i == pageVO.getPage()){ %> 
+									class="active"
+									<% } %>
+								>
+									
+									<% if(i == pageVO.getPage()){ %>
+										<span><%=i%></span>
+									<% }else{ %>
+										<a href="<%=request.getContextPath()%>/userPagingList?page=<%=i%>&pageSize=<%=pageVO.getPageSize()%>"><%=i%></a>
+									<% } %>
+									
+								</li>
+								<% 
+									}
+									if(pageVO.getPage() >= paginationSize){
+								%>
+									<li class="disabled"><span>»</span></li>
+								<% }else{ %>
+									<li>
+										<a href="<%=request.getContextPath()%>/userPagingList?page=<%=pageVO.getPage()+1%>&pageSize=<%=pageVO.getPageSize()%>">»</a>
+									</li>
+								<% } %>
+								
 							</ul>
 						</div>
 					</div>

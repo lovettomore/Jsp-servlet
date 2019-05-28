@@ -1,7 +1,9 @@
 package kr.or.ddit.user.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.paging.model.PageVO;
 import kr.or.ddit.user.dao.IUserDao;
@@ -56,7 +58,7 @@ public class UserService implements IUserService {
 	* Method 설명 	: 사용자 페이징 리스트 조회
 	 */
 	@Override
-	public List<UserVO> userPagingList(PageVO pageVO) {
+	public Map<String, Object> userPagingList(PageVO pageVO) {
 		/*
 			하나의 메소드에서 두개를 리턴해야되요. 두개의 값을 동시에 넣을 수 있는 객체가 필요해요
 			------------------------------------------------------------------
@@ -67,10 +69,22 @@ public class UserService implements IUserService {
 			3. Map<String, Object> resultMap = new HashMap<String, Object>();
 			   resultMap.put("userList", userList);
 			   resultMap.put("userCnt", userCnt);
+			   
+			------------------------------------------------------------------
+			저는 3번째 방법을 추천 드려용 옛썰!
 		*/
-		List<UserVO> userList = userDao.userPagingList(pageVO);
-		int usersCnt = userDao.usersCnt();
-		return null;
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("userList", userDao.userPagingList(pageVO));
+		
+		//usersCnt > paginationSize 으로 변경
+		int userCnt = userDao.usersCnt();
+		
+		//pageSize > pageVO.getPageSize();
+		int paginationSize = (int)Math.ceil((double)userCnt/pageVO.getPageSize());
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
 	}
 
 

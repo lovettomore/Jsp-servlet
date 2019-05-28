@@ -2,6 +2,7 @@ package kr.or.ddit.user.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.function.IntToDoubleFunction;
 
 import javax.servlet.ServletException;
@@ -58,12 +59,16 @@ public class UserPagingController extends HttpServlet {
 //		int pageSize = pageSizeString == null ? 10 :Integer.parseInt(pageSizeString);
 		
 		PageVO pageVO = new PageVO(page, pageSize); //새로운 pageVO객체를 만든다. (파라미터값 페이지번호와, 페이지사이즈를 같이 넘김)
-		List<UserVO> userList= userService.userPagingList(pageVO); //service에서 select문을 받아와서 pageVO를 넘김
+		Map<String, Object> resultMap = userService.userPagingList(pageVO);
+		
+		List<UserVO> userList= (List<UserVO>) resultMap.get("userList");
+		int paginationSize = (int) resultMap.get("paginationSize");
 		
 		request.setAttribute("userList", userList); //request에 userList를 셋팅
+		request.setAttribute("paginationSize", paginationSize); //request에 userList를 셋팅
+		request.setAttribute("pageVO", pageVO);
 		
 		request.getRequestDispatcher("/user/userPagingList.jsp").forward(request, response);
-		
 		
 	}
 
