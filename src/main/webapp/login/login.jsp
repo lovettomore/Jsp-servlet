@@ -49,13 +49,13 @@
 					//만약 rememberme 체크박스가 해제되어 있는 경우
 					//userId, rememberme cookie값을 삭제
 					
-					if($("#rememberme").is(":checked")){
-						Cookies.set("userId", $("#userId").val(), {expires :30});
-						Cookies.set("rememberme", "true", {expires :30});
-					}else{
-						Cookies.remove("userId");
-						Cookies.remove("rememberme");
-					}
+// 					if($("#rememberme").is(":checked")){
+// 						Cookies.set("userId", $("#userId").val(), {expires :30});
+// 						Cookies.set("rememberme", "true", {expires :30});
+// 					}else{
+// 						Cookies.remove("userId");
+// 						Cookies.remove("rememberme");
+// 					}
 					
 					//로그인 요청을 서버로 전송
 					$("#frm").submit();
@@ -134,7 +134,7 @@
 				<input type="password" id="password" class="form-control" placeholder="password" name="password" value="brown1234" required>
 				
 				<div class="checkbox">
-					<label> <input type="checkbox" value="remember-me" id="rememberme">Remember me </label>
+					<label> <input type="checkbox" id="rememberme" name="rememberme" value="remember-me" >Remember me </label>
 				</div>
 				<button id="signInBtn" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
 			</form>
