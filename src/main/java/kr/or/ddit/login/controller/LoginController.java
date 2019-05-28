@@ -100,7 +100,7 @@ public class LoginController extends HttpServlet {
     	  
     	  int cookieMaxAge = 0;
     	  
-    	  if(request.getParameter("rememberme") != null) cookieMaxAge = 60*60*24*30;
+    	  if(request.getParameter("rememberme") != null) cookieMaxAge = 60*60*24*30; //30일짜리 MaxAge를 만들어줌
     		  
 		  Cookie userIdCookie = new Cookie("userId", userId);
 		  userIdCookie.setMaxAge(cookieMaxAge);
@@ -110,8 +110,6 @@ public class LoginController extends HttpServlet {
 		  
 		  response.addCookie(userIdCookie);
 		  response.addCookie(rememberMeCookie);
-    	  
-    	  
     	  
     	  
     	  //session에 사용자 정보를 넣어준다.(사용 빈도가 높기때문에)
