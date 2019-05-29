@@ -17,13 +17,7 @@
 		ResultSet rs = null;
 		
 		try {
-			
-			BasicDataSource bs = new BasicDataSource();
-			bs.setUrl("jdbc:oracle:thin:@112.220.114.130:1521:xe");
-			bs.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-			bs.setUsername("MDMS");
-			bs.setPassword("java");
-			bs.setInitialSize(20); //초기값 설정
+			BasicDataSource bs = (BasicDataSource)application.getAttribute("bs");
 			
 			// 2. 접속 ==> Connection객체 생성
 			long startTime = System.currentTimeMillis();
@@ -33,8 +27,6 @@
 			}
 			long endTime = System.currentTimeMillis();
 			System.out.println("duration : " + (endTime - startTime));
-			
-			bs.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
