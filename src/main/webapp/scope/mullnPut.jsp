@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="<%=request.getContextPath() %>/css/default.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/default.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<div id="wrap">
@@ -16,7 +16,7 @@
 				<p>스코프의 종류 및 특성 [ 각 스코프별 특성 출력 ]</p>
 			</section>
 			<section id="contents">
-				<form action="<%=request.getContextPath()%>/mulCalculation" method="post">
+				<form action="${pageContext.request.contextPath}/mulCalculation" method="post">
 					<table>
 						<tr>
 							<th>첫번째 숫자</th>

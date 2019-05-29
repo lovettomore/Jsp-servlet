@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="<%=request.getContextPath() %>/css/default.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/default.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<div id="wrap">
@@ -16,7 +16,7 @@
 			</section>
 			<section id="contents">
 				<div class="loginForm">
-					<form action="<%=request.getContextPath()%>/scope/scopeReceive.jsp" method="post">
+					<form action="${pageContext.request.contextPath}/scope/scopeReceive.jsp" method="post">
 						page <input type="text" name="pageParam" value="pageValue"><br>
 						request <input type="text" name="requestParam" value="requestValue"><br>
 						session <input type="text" name="sessionParam" value="sessionValue"><br>

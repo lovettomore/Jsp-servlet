@@ -113,29 +113,21 @@ public class LoginController extends HttpServlet {
     	  
     	  
     	  //session에 사용자 정보를 넣어준다.(사용 빈도가 높기때문에)
-    	  request.getSession().setAttribute("USER_INFO", new UserVO("브라운", "brown", "곰새끼"));
+    	  request.getSession().setAttribute("USER_INFO", new UserVO("브라운", "brown", "곰탱이"));
     	 
     	  RequestDispatcher rd =  request.getRequestDispatcher("/main.jsp");
     	  rd.forward(request, response);
          
-      }else { //불일치하면 (아이디 or 비번 잘못 입력) : 로그인 화면으로 이동 
+      } else { //불일치하면 (아이디 or 비번 잘못 입력) : 로그인 화면으로 이동 
          //로그인 화면으로 이동 : localhost/jsp/login
          //현상황에서 /jsp/login url로 dispatch 방식으로 위임이 불가
          //request.getMethod(); // GET, POST
          
-         response.sendRedirect(request.getContextPath() + "/login");
+         //response.sendRedirect(request.getContextPath() + "/login");
+    	  request.getRequestDispatcher("/login/login.jsp").forward(request, response);
          
          
       }
-      
-      
-      //불일치하면...
-      
-      
-      
-      
-      
-      
       
    }
 

@@ -1,7 +1,7 @@
 <%@page import="kr.or.ddit.user.model.UserVO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -26,25 +26,28 @@
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
-									<th>사용자 아이디</th>
+									<th>사용자 아이디(el)</th>
 									<th>사용자 이름</th>
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
-								<%
-									List<UserVO> userList = (List<UserVO>) request.getAttribute("userList");
-									//for(int i=0; i<userList.size(); i++){
-									for (UserVO user : userList) {
-								%>
-								<tr>
-									<td><%=user.getUserId()%></td>
-									<td><%=user.getName()%></td>
-									<td><%=user.getAlias()%></td>
-									<td></td>
-								</tr>
-								<%
-									}
-								%>
+								
+								<%/* 
+										[userList의 데이터를 한건씩 조회 해서 pageContext.setAttribute("user", vo)]
+										items = "루프를 볼 대상을 el로 넣어줌" 
+										var = "userList에 있는 데이터들을 user라는 속성의 이름으로 하나씩 뽑아서 쓸수 있게 el말고 그냥 표현"
+										user.userId 얘는 게터세터에 있는 그 이름이랑 같아요.
+										얘는 속성명이에요 UserVO에 있는 속성명과 같아야 해요.
+								
+								*/%>
+								<c:forEach items="${userList}" var="user">
+									<tr>
+										<td>${user.userId}</td>
+										<td>${user.name}</td>
+										<td>${user.alias}</td>
+										<td></td>
+									</tr>
+								</c:forEach>
 							</table>
 						</div>
 

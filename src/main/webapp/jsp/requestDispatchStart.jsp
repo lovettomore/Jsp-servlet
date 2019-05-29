@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="<%=request.getContextPath() %>/css/default.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/default.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<div id="wrap">
@@ -19,7 +19,7 @@
 					<p class="ex">
 						
 					</p>
-					<form action="<%=request.getContextPath()%>/jsp/requestDispatchProcess.jsp">
+					<form action="${pageContext.request.contextPath}/jsp/requestDispatchProcess.jsp">
 						<p><input type="text" name="userId" id="userId" value="sally"></p>
 						<p><input type="submit" value="requestDispatch"></p>
 					</form>

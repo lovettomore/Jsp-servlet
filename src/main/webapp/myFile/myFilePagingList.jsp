@@ -64,7 +64,7 @@
 									for(int i=1; i<paginationSize+1; i++){
 								%>
 									<li>
-										<a href="<%=request.getContextPath()%>/myFilePagingList?page=<%=i%>&pageSize=<%=pageVO.getPageSize()%>"><%=i%></a>
+										<a href="${pageContext.request.contextPath}"></a>
 									</li>
 								<%
 									}

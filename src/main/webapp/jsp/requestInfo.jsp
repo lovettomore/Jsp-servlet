@@ -20,10 +20,10 @@
 	request.getRemoteAddr() 	: <%=request.getRemoteAddr()%><br>
 	request.getLocalAddr() 		: <%=request.getLocalAddr()%><br>
 	request.getContentType() 	: <%=request.getContentType()%><br>
-	request.getContextPath() 	: <%=request.getContextPath()%><br>
-	<p><img src="<%=request.getContextPath()%>/img/img01.jpg" width="250px"></p>
+	request.getContextPath() 	: ${pageContext.request.contextPath}<br>
+	<p><img src="${pageContext.request.contextPath}/img/img01.jpg" width="250px"></p>
 	request.getMethod() 		: <%=request.getMethod()%><br>
-	request.getContextPath() 	: <%=request.getContextPath()%><br>
+	request.getContextPath() 	: ${pageContext.request.contextPath}<br>
 	request.getRequestURI() 	: <%=request.getRequestURI()%><br>
 	request.getProtocol() 		: <%=request.getProtocol()%><br>
 	

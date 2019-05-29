@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>login</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/signIn.css">
-		<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/signIn.css">
+		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script src="<%=request.getContextPath()%>/js/js.cookie.js"></script>
+		<script src="${pageContext.request.contextPath}/js/js.cookie.js"></script>
 		
 		<script>
 		
@@ -124,11 +124,11 @@
 		--%>
 
 		<div class="container">
-			<form id="frm" action="<%=request.getContextPath()%>/login" method="post" class="form-signin">
+			<form id="frm" action="${pageContext.request.contextPath}/login" method="post" class="form-signin">
 				<h2 class="form-signin-heading">Please sign in</h2>
 				
 				<label for="inputEmail" class="sr-only">Email address</label>
-				<input type="text" id="userId" class="form-control" placeholder="userId" name="userId" required>
+				<input type="text" id="userId" class="form-control" placeholder="userId" name="userId" value="${param.userId}" required>
 				
 				<label for="inputPassword" class="sr-only">Password</label> 
 				<input type="password" id="password" class="form-control" placeholder="password" name="password" value="brown1234" required>
