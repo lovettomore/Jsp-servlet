@@ -28,14 +28,16 @@
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
+									<th>번호</th>
 									<th>사용자 아이디(el)</th>
 									<th>사용자 이름</th>
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
 								
-								<c:forEach items="${userList}" var="user">
+								<c:forEach items="${userList}" var="user" varStatus="status">
 									<tr>
+										<td>${status.index} / ${status.count}</td>
 										<td>${user.userId}</td>
 										<td>${user.name}</td>
 										<td>${user.alias}</td>
@@ -56,49 +58,48 @@
 							<ul class="pagination">
 								<%
 									PageVO pageVO = (PageVO)request.getAttribute("pageVO");
-									if(pageVO.getPage() == 1){
-								%>
-									<li class="disabled"><span>«</span></li>
-								<% }else{ %>
-									<li>
-										<a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVO.getPage()-1 %>&pageSize=<%=pageVO.getPageSize() %>">«</a>
-									</li>
-								<% 
-									} 
-									
 									int paginationSize = (Integer)request.getAttribute("paginationSize");
-									for(int i=1; i<paginationSize+1; i++){
 								%>
+								
+								<c:choose>
+									<c:when test="${pageVO.page == 1}">
+										<li class="disabled"><span>«</span></li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="${pageContext.request.contextPath}/userPagingList?page=${pageVO.page-1}&pageSize=${pageVO.pageSize}">«</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 								
 								<!-- 
 									내가 현재 어떤 페이지에 있는지 어떻게 알 수 있지?
 									pageVO에 있어요. page와 pageSize를 이용해서 pageVO를 만들어용.
 								-->
-
-								<li 
-									<% if(i == pageVO.getPage()){ %> 
-									class="active"
-									<% } %>
-								>
-									
-									<% if(i == pageVO.getPage()){ %>
-										<span><%=i%></span>
-									<% }else{ %>
-										<a href="${pageContext.request.contextPath}/userPagingList?page=<%=i %>&pageSize=<%=pageVO.getPageSize()%>"><%=i%></a>
-									<% } %>
-									
-								</li>
-								<% 
-									}
-									if(pageVO.getPage() >= paginationSize){
-								%>
-									<li class="disabled"><span>»</span></li>
-								<% }else{ %>
-									<li>
-										<a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVO.getPage()+1 %>&pageSize=<%=pageVO.getPageSize()%>">»</a>
+								<c:forEach begin="1" end="${paginationSize+1}" step="1" var="i">
+									<c:choose>
+										<c:when test="${pageVO.page == i}">
+											<li class="active"><span>${i}</span></li>
+										</c:when>
+										<c:otherwise>
+											<li>
+												<a href="${pageContext.request.contextPath}/userPagingList?page=${i}&pageSize=${pageVO.pageSize}">${i}</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
 									</li>
-								<% } %>
-								
+								</c:forEach>
+
+								<c:choose>
+									<c:when test="${pageVO.page >= paginationSize}">
+										<li class="disabled"><span>»</span></li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="${pageContext.request.contextPath}/userPagingList?page=${pageVO.page+1}&pageSize=${pageVO.pageSize}">»</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 						</div>
 					</div>

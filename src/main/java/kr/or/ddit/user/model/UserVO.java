@@ -4,38 +4,56 @@ public class UserVO {
 	private String name;
 	private String userId;
 	private String alias;
+	private String pass;
 	
 	//인자가 있는 기본 생성자
-	public UserVO(String name, String userId, String alias) {
+	public UserVO(String name, String userId, String alias, String pass) {
 		super();
 		this.name = name;
 		this.userId = userId;
 		this.alias = alias;
+		this.pass = pass;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getUserId() {
 		return userId;
 	}
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 	public String getAlias() {
 		return alias;
 	}
+
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
-	
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	@Override
 	public String toString() {
-		return "UserVO [name=" + name + ", userId=" + userId + ", alias=" + alias + "]";
+		return "UserVO [name=" + name + ", userId=" + userId + ", alias=" + alias + ", pass=" + pass + "]";
 	}
+	
+	
+	
 	
 	
 }

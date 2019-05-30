@@ -11,13 +11,33 @@
                class="icon-bar"></span> <span class="icon-bar"></span> <span
                class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp"> JSP/SPRING ${USER_INFO.name}
+         <a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp"> JSP/SPRING 
          
          <!-- 값이 들어오지 않았을때 굳이 if문 처리를 하지 않아도 에러가 나지 않아 유동적으로 쓸 수 있음
          	el : ${USER_INFO.name}
          -->
          
-         <c:if test=""></c:if>
+         <!-- 사용자가 로그인하지 않고 메인 화면으로 직접 접속 했을 경우 () -->
+       
+         <c:choose>
+         	<c:when test="${USER_INFO.userId == null}">
+         		접속하지 않은 사용자 입니다.
+         	</c:when>
+         	<c:otherwise>
+         		${USER_INFO.name}
+         	</c:otherwise>
+         </c:choose>
+         
+<%--          <c:set var="userName" value="${USER_INFO.name}"/> --%>
+<%--          <c:if test="${userName == null}"> --%>
+<%--          	<c:set var="userName" value="[]"/> --%>
+<%--          </c:if> --%>
+         
+         
+<%--          <c:if test="${USER_INFO.userId == null}"> --%>
+<!--          	접속하지 않은 사용자 입니다. -->
+<%--          </c:if> --%>
+         
          </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
