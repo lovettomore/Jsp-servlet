@@ -14,6 +14,27 @@
 
 	<title>사용자 페이징 리스트</title>
 	<%@include file="/common/basicLib.jsp"%>
+	
+	<%-- custom css --%>
+	<style>
+		.userTr td {cursor:pointer}
+	</style>
+	
+	<%-- custom script --%>
+	<script>
+		$(document).ready(function(){
+			$(".userTr").on("click", function(){
+				//$(this).data("userid");
+				
+				//사용자 아이디를 #userId값으로 설정해주고
+				var userId = $(this).children('td:nth-child(1)').text();
+				$("#userId").val(userId);
+				
+				//#frm을 이용하여 submit();
+				$("#frm").submit();
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -26,18 +47,23 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자</h2>
 						<div class="table-responsive">
+						
+							<!-- 사용자 상세조회 : userId가 필요 -->
+							<form action="${pageContext.request.contextPath}/user" method="get" id="frm">
+								<input type="hidden" id="userId" name="userId">
+							</form>
+							
 							<table class="table table-striped">
 								<tr>
-									<th>번호</th>
 									<th>사용자 아이디(el)</th>
 									<th>사용자 이름</th>
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
 								
+								<%-- 클릭했을 때 사용자가 누군지 키값을 아는게 좋을거 같아요. --%>
 								<c:forEach items="${userList}" var="user" varStatus="status">
-									<tr>
-										<td>${status.index} / ${status.count}</td>
+									<tr class="userTr" data-userid="${user.userId}">
 										<td>${user.userId}</td>
 										<td>${user.name}</td>
 										<td>${user.alias}</td>
@@ -56,11 +82,7 @@
 						-->
 						<div class="text-center">
 							<ul class="pagination">
-								<%
-									PageVO pageVO = (PageVO)request.getAttribute("pageVO");
-									int paginationSize = (Integer)request.getAttribute("paginationSize");
-								%>
-								
+							
 								<c:choose>
 									<c:when test="${pageVO.page == 1}">
 										<li class="disabled"><span>«</span></li>
@@ -100,6 +122,7 @@
 										</li>
 									</c:otherwise>
 								</c:choose>
+								
 							</ul>
 						</div>
 					</div>
