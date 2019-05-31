@@ -15,11 +15,10 @@
 
 <body>
 	<div class="container-fluid">
-		<%@include file="/common/header.jsp"%>
+		<%@include file="/common/sidebar.jsp"%>
 		<div class="row">
-			<%@include file="/common/sidebar.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			
+				<%@include file="/common/header.jsp"%>
 				<div class="blog-header">
 					<h1 class="blog-title">Main</h1>
 					<p class="lead blog-description">Jsp / Spring.</p>

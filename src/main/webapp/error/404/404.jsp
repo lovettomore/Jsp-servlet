@@ -31,53 +31,8 @@
 
 
 <div class="wrapper">
-
-   <div class="mainWrapper">
-    
-    <!--    <div id="logo"><a href="#" title="Traffic 404 Custom Error Page">MogooLab</a></div> -->
-    
-        <div class="mainHolder">
-            <div class="message">페이지를 찾을수가 없어요....</div>
-            <!-- end .message -->
-            <div class="errorNumber">404</div> 
-            <!-- end .errorNumber -->
-            <!-- Search Form -->
-            <!-- <div class="search">
-            <form action="" method="post">
-              <div class="searchInput">
-                <input type="text" name="search_term" value="Search" />
-              </div>
-              <div class="searchButton">
-                <input type="submit" name="submit" value="" />
-              </div>
-            
-            </form>
-            </div> -->
-            <!-- end .search -->
-            
-            <div class="trafficLight">404 Error</div>
-            
-        </div>
-        <!-- end .mainHolder -->
-      
-      
-        <footer>
-        <!-- <p class="copy">&copy 2011 Traffic Jam 404. All rights reserved.</p>-->
-        <!-- <menu>
-            <li><a href="#" title="Home">Home</a></li>
-            <li><a href="#" title="About Us">About us</a></li>
-            <li><a href="#" title="Portfolio">Portfolio</a></li>
-            <li><a href="#" title="Sitemap">Sitemap</a></li>
-            <li><a href="#" title="Contact">Contact</a></li>
-        </menu> -->
-        </footer>
-        <!-- end footer -->
-   </div>
-     <!-- end .mainWrapper -->
-
+   <div class="mainWrapper"></div>
 </div>
-<!-- end .wrapper -->
-
 
 </body>
 </html>

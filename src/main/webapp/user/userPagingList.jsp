@@ -38,11 +38,11 @@
 </head>
 
 <body>
-	<%@include file="/common/header.jsp"%>
-	<div class="container-fluid">
+<div class="container-fluid">
+		<%@include file="/common/sidebar.jsp"%>
 		<div class="row">
-			<%@include file="/common/sidebar.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<%@include file="/common/header.jsp"%>
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자</h2>

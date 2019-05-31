@@ -17,7 +17,7 @@
          -->
          
          <!-- 사용자가 로그인하지 않고 메인 화면으로 직접 접속 했을 경우 () -->
-       
+      	 <span>
          <c:choose>
          	<c:when test="${USER_INFO.userId == null}">
          		접속하지 않은 사용자 입니다.
@@ -26,7 +26,7 @@
          		${USER_INFO.name}
          	</c:otherwise>
          </c:choose>
-         
+         </span>
 <%--          <c:set var="userName" value="${USER_INFO.name}"/> --%>
 <%--          <c:if test="${userName == null}"> --%>
 <%--          	<c:set var="userName" value="[]"/> --%>
