@@ -17,11 +17,11 @@
 </head>
 
 <body>
-	<%@include file="/common/header.jsp"%>
-	<div class="container-fluid">
+<div class="container-fluid">
+		<%@include file="/common/sidebar.jsp"%>
 		<div class="row">
-			<%@include file="/common/sidebar.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<%@include file="/common/header.jsp"%>
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자</h2>
@@ -34,9 +34,7 @@
 									<th>파일 서버이름</th>
 									<th>파일 크기</th>
 								</tr>
-								<%
-									List<MyFileVO> myFileList = (List<MyFileVO>)request.getAttribute("myFileList");
-								%>
+								
 								<c:forEach items="${myFileList}" var="myFile">
 									<tr>
 										<td>${myFile.file_seq}</td>
@@ -51,50 +49,43 @@
 
 						<a class="btn btn-default pull-right">사용자 등록</a>
 						
-						<!-- 
-								파일 수 		: 33건 
-								페이지네이션 	: 4페이지
-						-->
 						<div class="text-center">
 							<ul class="pagination">
+							
+								<c:choose>
+									<c:when test="${pageVO.page == 1}">
+										<li class="disabled"><span>«</span></li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="${pageContext.request.contextPath}/myFilePagingList?page=${pageVO.page-1}&pageSize=${pageVO.pageSize}">«</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 								
-								<%
-									PageVO pageVO = (PageVO)request.getAttribute("pageVO");
-									int paginationSize = (Integer)request.getAttribute("paginationSize");
-									
-									if(pageVO.getPage() == 1){
-								%>
-									<li class="disabled"><span>«</span></li>
-								<% }else{ %>
-									<li>
-										<a href="${pageContext.request.contextPath}/myFilePagingList?page=<%=pageVO.getPage()-1%>&pageSize=<%=pageVO.getPageSize()%>">«</a>
-									</li>
-								<% } %>
+								<c:forEach begin="1" end="${paginationSize}" step="1" var="i">
+									<c:choose>
+										<c:when test="${pageVO.page == i}">
+											<li class="active"><span>${i}</span></li>
+										</c:when>
+										<c:otherwise>
+											<li>
+												<a href="${pageContext.request.contextPath}/myFilePagingList?page=${i}&pageSize=${pageVO.pageSize}">${i}</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 								
-								
-								<%
-									for(int i=1; i<paginationSize+1; i++){
-								%>
-									<li 
-									<% if(i == pageVO.getPage()){ %> 
-									class="active"
-									<% } %>
-									>
-										<a href="${pageContext.request.contextPath}/myFilePagingList?page=<%=i%>&pageSize=<%=pageVO.getPageSize()%>"><%=i%></a>
-									</li>
-								<%
-									}
-								%>
-								
-								<%
-									if(pageVO.getPage() >= paginationSize){
-								%>
-									<li class="disabled"><span>»</span></li>
-								<% }else{ %>
-									<li>
-										<a href="${pageContext.request.contextPath}/myFilePagingList?page=<%=pageVO.getPage()+1%>&pageSize=<%=pageVO.getPageSize()%>">»</a>
-									</li>
-								<% } %>
+								<c:choose>
+									<c:when test="${pageVO.page >= paginationSize}">
+										<li class="disabled"><span>»</span></li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="${pageContext.request.contextPath}/myFilePagingList?page=${pageVO.page+1}&pageSize=${pageVO.pageSize}">»</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 								
 							</ul>
 						</div>
