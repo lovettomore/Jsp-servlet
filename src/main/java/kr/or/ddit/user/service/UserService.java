@@ -87,5 +87,51 @@ public class UserService implements IUserService {
 		return resultMap;
 	}
 
+	/**
+	 * 
+	* Method 		: insertUser
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param userVO
+	* @return
+	* Method 설명 	: 사용자 등록
+	 */
+	public int insertUser(UserVO userVO) {
+		int insertCnt = 0;
+		insertCnt = userDao.insertUser(userVO);
+		return insertCnt;
+	}
+	
+	/**
+	 * 
+	* Method 		: deleteUser
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param userId
+	* @return
+	* Method 설명 	: 사용자 삭제
+	 */
+	public int deleteUser(String userId) {
+		int deleteCnt = 0;
+		deleteCnt = userDao.deleteUser(userId);
+		return deleteCnt;
+	}
+
+	/**
+	 * 
+	* Method 		: updateUser
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param userVO
+	* @return
+	* Method 설명 	: 사용자 수정
+	 */
+	@Override
+	public int updateUser(UserVO userVO) {
+		int updateCnt = 0;
+		updateCnt = userDao.updateUser(userVO);
+		return updateCnt;
+	}
+
 
 }

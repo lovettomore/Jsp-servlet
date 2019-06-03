@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,8 +15,19 @@
 
 <title>사용자 상세 조회</title>
 <%@include file="/common/basicLib.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		//사용자 등록 클릭버튼 클릭 이벤트 핸들러 
+		$("#btnUserModify").on("click", function(){
+			$("#frm").submit();
+		});
+	});
+</script>
 </head>
 
+	
 <body>
 	
 <div class="container-fluid">
@@ -26,14 +38,18 @@
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 상세 조회</h2>
-						
-						<form class="form-horizontal" role="form">
-<!-- 						<input type="text" class="form-control" id="userId" name="userId" placeholder="사용자 아이디"> -->
 							
+						<form id="frm" class="form-horizontal" action="${pageContext.request.contextPath}/userModify" method="get" role="form">
+							<input type="hidden" id="userId" name="userId" value="${userVO.userId}">
+						
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
 									<img src="${pageContext.request.contextPath}/profile?userId=${userVO.userId}" style="width:150px">
+								</div>
+								<label for="userNm" class="col-sm-2 control-label"></label>
+								<div class="col-sm-10">
+									${msg}
 								</div>
 							</div>
 							
@@ -48,7 +64,6 @@
 								<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 								<div class="col-sm-10">
 									<label class="control-label">${userVO.name}</label>
-<!-- 								<input type="text" class="form-control" id="userNm" name="userNm" placeholder="사용자 이름"> -->
 								</div>
 							</div>
 							<div class="form-group">
@@ -81,13 +96,13 @@
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">생일</label>
 								<div class="col-sm-10">
-									<label class="control-label">${userVO.birth}</label>
+									<label class="control-label"><fmt:formatDate value="${userVO.birth}" pattern="yyyy-MM-dd"/></label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-default">사용자 수정</button>
+									<button type="button" id="btnUserModify" class="btn btn-default">사용자 수정</button>
 								</div>
 							</div>
 						</form>

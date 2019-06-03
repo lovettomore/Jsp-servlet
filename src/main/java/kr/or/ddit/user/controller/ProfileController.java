@@ -45,20 +45,25 @@ public class ProfileController extends HttpServlet {
 		//사용자 정보(PATH)를 조회
 		UserVO userVO = userService.getUser(userId);
 		
+		
 		//PATH정보로 file을 읽어 들여서
 		ServletOutputStream sos = response.getOutputStream();
-		File file = new File(userVO.getPath());
-		FileInputStream fis = new FileInputStream(file);
-		
-		byte[] buffer = new byte[512];
-		
-		//response객체에 스트림으로 써준다.
-		while(fis.read(buffer, 0, 512) != -1) {
-			sos.write(buffer);
-		};
-		
-		fis.close();
-		sos.close();
+		if(userVO.getPath() == null) {
+			request.setAttribute("msg", "등록된 파일이 없습니다.");
+		}else {
+			File file = new File(userVO.getPath());
+			FileInputStream fis = new FileInputStream(file);
+			
+			byte[] buffer = new byte[512];
+			
+			//response객체에 스트림으로 써준다.
+			while(fis.read(buffer, 0, 512) != -1) {
+				sos.write(buffer);
+			};
+			
+			fis.close();
+			sos.close();
+		}
 		
 	}
 

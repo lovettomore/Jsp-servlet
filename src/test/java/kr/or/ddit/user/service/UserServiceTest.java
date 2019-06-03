@@ -2,6 +2,8 @@ package kr.or.ddit.user.service;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -89,6 +91,46 @@ public class UserServiceTest {
 		
 		/***Then***/
 		assertEquals(11, (int)paginationSize);
+	}
+	
+	/**
+	 * 
+	* Method 		: insertUserTest
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* Method 설명 	: 사용자 등록 테스트
+	 * @throws ParseException 
+	 */
+	@Test
+	public void insertUserTest() throws ParseException {
+		/***Given***/
+		//사용자 정보를 담고있는 vo객체 준비
+		
+		SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd");
+		UserVO userVO = new UserVO("user1011", "user", "사용자101", "user1011234", "주소1", "주소2", "34523", spf.parse("2019-05-03"));
+		
+		/***When***/
+		//userDao.insertUser() 를 실행
+		int insertCnt = userService.insertUser(userVO);
+
+		/***Then***/
+		//inserCnt(1) 이면 성공
+		assertEquals(1, insertCnt);
+		
+		userService.deleteUser(userVO.getUserId());
+	}
+	
+	@Test
+	public void updateUserTest() throws ParseException {
+		/***Given***/
+		SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd");
+		UserVO userVO = new UserVO("user1011", "user", "나는사용자", "user1011234", "대전 서구 탄방동", "탄방역 243-24", "23423", spf.parse("2019-05-24"));
+		
+		/***When***/
+		int updateCnt = userService.updateUser(userVO);
+
+		/***Then***/
+		assertEquals(1, updateCnt);
 	}
 	
 	
