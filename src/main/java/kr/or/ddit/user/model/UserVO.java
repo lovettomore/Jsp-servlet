@@ -23,7 +23,7 @@ public class UserVO {
 	
 	//인자가 있는 기본 생성자
 	public UserVO(String userId, String name, String alias, String pass, String addr1, String addr2, String zipcd,
-			Date birth) {
+			Date birth/*, String path, String filename*/) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -33,6 +33,8 @@ public class UserVO {
 		this.addr2 = addr2;
 		this.zipcd = zipcd;
 		this.birth = birth;
+		//this.path = path;
+		//this.filename = filename;
 	}
 	
 	public String getBirthStr() {
@@ -42,6 +44,7 @@ public class UserVO {
 		}
 		return sdf.format(birth);
 	}
+
 
 	public String getUserId() {
 		return userId;
@@ -129,10 +132,5 @@ public class UserVO {
 				+ addr1 + ", addr2=" + addr2 + ", zipcd=" + zipcd + ", birth=" + birth + ", path=" + path
 				+ ", filename=" + filename + "]";
 	}
-	
-	
-	
-	
-	
 	
 }

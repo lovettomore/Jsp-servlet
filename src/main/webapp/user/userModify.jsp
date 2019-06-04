@@ -83,12 +83,13 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 수정</h2>
 						
-						<form id="frm" class="form-horizontal" action="${pageContext.request.contextPath}/userModify" method="post" role="form">
+						<form id="frm" class="form-horizontal" action="${pageContext.request.contextPath}/userModify" enctype="multipart/form-data" method="post" role="form">
 							
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
-								<div class="col-sm-10">
-									<input type="file" class="form-control" id="filename" name="filename">
+								<div class="col-sm-10" style="position:relative">
+									<input type="file" class="form-control" id="profile" name="profile">
+									<span style="position:absolute; right:30px; top:8px; color:#c88a8a; font-size:13px">현재파일 - ${userVO.filename}</span>
 								</div>
 							</div>
 							

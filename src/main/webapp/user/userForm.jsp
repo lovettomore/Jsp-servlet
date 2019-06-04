@@ -83,11 +83,11 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 등록</h2>
 						
-						<form id="frm" class="form-horizontal" action="${pageContext.request.contextPath}/userForm" method="post" role="form">
+						<form id="frm" class="form-horizontal" action="${pageContext.request.contextPath}/userForm" method="post" enctype="multipart/form-data" role="form">
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
-									<input type="file" class="form-control" id="filename" name="filename">
+									<input type="file" class="form-control" id="profile" name="profile">
 								</div>
 							</div>
 							
@@ -143,7 +143,7 @@
 							<div class="form-group">
 								<label for="zipcd" class="col-sm-2 control-label">우편번호</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="zipcd" name="zipcd" placeholder="우편번호를 입력하세요." value="${param.zipcd}" eadonly>
+									<input type="text" class="form-control" id="zipcd" name="zipcd" placeholder="우편번호를 입력하세요." value="${param.zipcd}" readonly>
 								</div>
 							</div>
 							

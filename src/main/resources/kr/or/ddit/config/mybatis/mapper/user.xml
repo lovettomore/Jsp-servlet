@@ -37,7 +37,7 @@
 	
 	<!-- 사용자 등록 -->
 	<insert id="insertUser" parameterType="userVO">
-		INSERT INTO USERS VALUES (#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, #{birth}, '', '')
+		INSERT INTO USERS VALUES (#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, #{birth}, #{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 사용자 삭제 -->
@@ -55,6 +55,20 @@
 				ADDR2 		= #{addr2},
 				ZIPCD 		= #{zipcd},
 				BIRTH 		= #{birth}
+				<if test="path != null">
+					, PATH 		= #{path},
+					FILENAME	= #{filename}
+				</if>
 		WHERE USERID = #{userId}
+	</update>
+	
+	<!-- 사용자 비밀번호 암호화 적용 대상 조회 : 'brown', 'lazysunday' 제외 -->
+	<select id="userListForPassEncrypt" resultType="userVO">
+		SELECT * FROM USERS WHERE USERID NOT IN ('brown', 'lazysunday')
+	</select>
+	
+	<!-- 사용자 비밀번호 업데이트 -->
+	<update id="updateUserEncryptPass">
+		UPDATE USERS SET PASS = #{pass} WHERE USERID = #{userId}
 	</update>
 </mapper>
