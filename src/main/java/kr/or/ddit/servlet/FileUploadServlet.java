@@ -52,45 +52,20 @@ public class FileUploadServlet extends HttpServlet {
 			logger.debug("part.getContentType : {}", part.getContentType()); //얘는 파일 종류, 확장자
 			logger.debug("part.getName : {}", part.getName()); //얘는 파라미터 명을 찍어줬어요
 			
-			
 			String contentDispostion = part.getHeader("content-disposition");
-			String fileName = PartUtil.getFileName(contentDispostion);
-			String ext = PartUtil.geExt(fileName);
-			ext = ext.equals("") ? "" : "." + ext;
+			String filename = PartUtil.getFileName(contentDispostion);
+			String ext = PartUtil.getExt(filename);
 			
-			//년도에 해당하는 폴더가 있는지, 년도안에 월에 해당하는 폴더가 있는지
-			Date date = new Date();
-			SimpleDateFormat yyyyMMSdf = new SimpleDateFormat("yyyyMM");
-			
-			//String type으로 형변환
-			String yyyyMM = yyyyMMSdf.format(date);
-			String yyyy = yyyyMM.substring(0,4);
-			String mm = yyyyMM.substring(4,6);
-			
-//			String yyyy = yyyySdf.format(date);
-//			String mm = mmSdf.format(date);
-			
-			File yyyyFolder = new File("/Users/chewoop/Documents/upload/" + yyyy);
-			//신규년도로 넘어갔을 때 해당 년도의 폴더를 생성한다.
-			if(!yyyyFolder.exists()) {
-				//해당 폴더 안에 새로운 폴더 생성
-				yyyyFolder.mkdir();
-			}
-			
-			//월에 해당하는 폴더가 있는지 확인
-			File mmFolder = new File("/Users/chewoop/Documents/upload/2019/" + mm);
-			if(!mmFolder.exists()) {
-				mmFolder.mkdir();
-			}
+			String uploadPath = PartUtil.getUploadPath();
 			
 			//만약 폴더가 정상적으로 생성이 되었으면
-			String uploadPath = "/Users/chewoop/Documents/upload/" + yyyy + File.separator + mm;
 			File uploadFolder = new File(uploadPath);
 			if(uploadFolder.exists()) {
 				//파일 디스크에 쓰기
 				part.write(uploadPath + File.separator + UUID.randomUUID().toString() + ext);
 				part.delete();
 			}
+			
 			
 		}
 		

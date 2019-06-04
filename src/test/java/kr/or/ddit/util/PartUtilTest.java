@@ -44,13 +44,13 @@ public class PartUtilTest {
 		String fileName3 = "brown";
 		
 		/***When***/
-		String ext = PartUtil.geExt(fileName);
-		String ext2 = PartUtil.geExt(fileName2);
-		String ext3 = PartUtil.geExt(fileName3);
+		String ext = PartUtil.getExt(fileName);
+		String ext2 = PartUtil.getExt(fileName2);
+		String ext3 = PartUtil.getExt(fileName3);
 		
 		/***Then***/
-		assertEquals("png", ext);
-		assertEquals("png", ext2);
+		assertEquals(".png", ext);
+		assertEquals(".png", ext2);
 		assertEquals("", ext3);
 	}
 	
