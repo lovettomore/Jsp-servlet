@@ -89,10 +89,10 @@ public class LoginController extends HttpServlet {
 	// 로그인 요청을 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		logger.debug("rememberme parameter : {} ", request.getParameter("rememberme"));
+//		logger.debug("rememberme parameter : {} ", request.getParameter("rememberme"));
 
-		logger.debug("parameter userId : {}", request.getParameter("userId"));
-		logger.debug("parameter password : {}", request.getParameter("password"));
+//		logger.debug("parameter userId : {}", request.getParameter("userId"));
+//		logger.debug("parameter password : {}", request.getParameter("password"));
 
 		// 사용자 파라미터 userId, password
 		String userId = request.getParameter("userId");

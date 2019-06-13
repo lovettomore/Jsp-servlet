@@ -122,7 +122,7 @@
 
 		<div class="container">
 			<form id="frm" action="${pageContext.request.contextPath}/login" method="post" class="form-signin">
-				<h2 class="form-signin-heading">Please sign in</h2>
+				<h2 class="form-signin-heading">Please sign in ${requestMap}</h2>
 				
 				<label for="inputEmail" class="sr-only">Email address</label>
 				<input type="text" id="userId" class="form-control" placeholder="userId" name="userId" value="${param.userId}" required>
@@ -137,6 +137,5 @@
 			</form>
 	
 		</div>
-		<!-- /container -->
 	</body>
 </html>
