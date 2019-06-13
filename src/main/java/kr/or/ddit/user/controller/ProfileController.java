@@ -30,7 +30,6 @@ public class ProfileController extends HttpServlet {
 	private IUserService userService;
 	
 	
-
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		userService = new UserService();
@@ -56,10 +55,11 @@ public class ProfileController extends HttpServlet {
 			filePath = userVO.getPath();
 		}
 		// 사용자가 업로드한 파일이 존재하지 않을 경우 : no-image.gif
-		else {
+		else
 			filePath = getServletContext().getRealPath("/img/noimage.gif");
+		
+		
 			File file = new File(filePath);
-			
 			fis = new FileInputStream(file);
 			byte[] buffer = new byte[512];
 			
@@ -70,7 +70,7 @@ public class ProfileController extends HttpServlet {
 			
 			fis.close();
 			sos.close();
-		}
+		
 	}
 
 }

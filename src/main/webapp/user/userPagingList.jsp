@@ -49,7 +49,7 @@
 						<div class="table-responsive">
 						
 							<!-- 사용자 상세조회 : userId가 필요 -->
-							<form action="${pageContext.request.contextPath}/user" method="get" id="frm">
+							<form action="${pageContext.request.contextPath}/viewBoard" method="get" id="frm">
 								<input type="hidden" id="userId" name="userId">
 							</form>
 							
