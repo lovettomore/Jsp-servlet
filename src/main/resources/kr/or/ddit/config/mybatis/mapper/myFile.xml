@@ -23,4 +23,9 @@
 	<select id="myFileCnt" resultType="int">
 		SELECT COUNT(*) FROM MYFILE
 	</select>
+	
+	<!-- 파일 조회 -->
+	<select id="myFile" resultType="myFileVO">
+		SELECT * FROM MYFILE WHERE FILE_BD_CODE = #{file_bd_code}
+	</select>
 </mapper>

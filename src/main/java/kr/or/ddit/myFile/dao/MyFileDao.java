@@ -74,5 +74,23 @@ public class MyFileDao implements IMyFileDao{
 		sqlSession.close();
 		return myFileCnt;
 	}
+	
+	
+	/**
+	 * 
+	* Method 		: myFile
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param file_bd_code
+	* @return
+	* Method 설명 	: 파일 코드로 파일리스트 조회
+	 */
+	@Override
+	public List<MyFileVO> myFile(String file_bd_code) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		List<MyFileVO> myFile = sqlSession.selectList("myFile.myFile", file_bd_code);
+		sqlSession.close();
+		return myFile;
+	}
 
 }

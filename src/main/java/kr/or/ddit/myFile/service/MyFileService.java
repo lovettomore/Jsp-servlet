@@ -37,5 +37,12 @@ public class MyFileService implements IMyFileService {
 		return resultMap;
 	}
 
+	@Override
+	public List<MyFileVO> myFile(String file_bd_code) {
+		List<MyFileVO> myFile = new ArrayList<MyFileVO>();
+		myFile = myFileDao.myFile(file_bd_code);
+		return myFile;
+	}
+
 
 }

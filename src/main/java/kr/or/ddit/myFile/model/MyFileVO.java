@@ -9,6 +9,10 @@ public class MyFileVO {
 	private String file_size;			//파일사이즈
 	
 	
+	public MyFileVO() {
+
+	}
+	
 	public MyFileVO(int file_seq, String file_bd_code, String file_original_name, String file_server_name,
 			String file_size) {
 		super();
@@ -19,6 +23,10 @@ public class MyFileVO {
 		this.file_size = file_size;
 	}
 	
+	public MyFileVO(String file_bd_code) {
+		this.file_bd_code = file_bd_code;
+	}
+
 	public int getFile_seq() {
 		return file_seq;
 	}

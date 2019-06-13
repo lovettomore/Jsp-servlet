@@ -1,4 +1,4 @@
-package kr.or.ddit.user.dao;
+package kr.or.ddit.myFile.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -61,6 +61,17 @@ public class MyFileDaoTest {
 		
 		/***Then***/
 		assertEquals(33, myFileCnt);
+	}
+	
+	@Test
+	public void myFileTest() {
+		/***Given***/
+		String file_bd_code = "HC";
+		/***When***/
+		List<MyFileVO> myFileList = myFileDao.myFile(file_bd_code);
+		
+		/***Then***/
+		assertEquals("detail_02", myFileList.get(0).getFile_original_name());
 	}
 	
 	

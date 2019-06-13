@@ -28,5 +28,16 @@ public interface IMyFileService {
 	 */
 	Map<String, Object> myFilePasingList(PageVO pageVO);
 	
+	/**
+	 * 
+	* Method 		: myFile
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param file_bd_code
+	* @return
+	* Method 설명 	: 파일 코드로 파일리스트 조회
+	 */
+	List<MyFileVO> myFile(String file_bd_code);
+	
 	
 }
