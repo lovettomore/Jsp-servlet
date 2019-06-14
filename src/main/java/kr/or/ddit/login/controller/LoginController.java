@@ -54,8 +54,8 @@ public class LoginController extends HttpServlet {
 
 	//사용자 로그인 화면 요청 처리
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("LoginController doGet()");
-
+		logger.debug("parameter doGet UNT_CD : {}", request.getParameter("UNT_CD"));
+		
 		//만약에 request에 빈값이 있으면 null을 반환한다.
 		if(request.getCookies() != null) {
 			for (Cookie cookie : request.getCookies()) {
@@ -70,44 +70,34 @@ public class LoginController extends HttpServlet {
 
 		// session에 사용자 정보가 있을 경우 > main화면으로 이동
 
-		logger.debug("info {}", request.getSession().getAttribute("USER_INFO"));
-
 		if (request.getSession().getAttribute("USER_INFO") == null) {
 			request.getRequestDispatcher("/login/login.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		}
-
-		// session에 사용자 정보가 없을 경우 > 기존 로직
-		// request.getRequestDispatcher("/login/login.jsp").forward(request, response);
-		// //방법1
-		// 방법2
-		// RequestDispatcher rd = request.getRequestDispatcher("/login/login.jsp");
-		// rd.forward(request, response);
 	}
 
 	// 로그인 요청을 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		logger.debug("rememberme parameter : {} ", request.getParameter("rememberme"));
-
-//		logger.debug("parameter userId : {}", request.getParameter("userId"));
-//		logger.debug("parameter password : {}", request.getParameter("password"));
-
+		logger.debug("parameter doPost UNT_CD : {}", request.getParameter("UNT_CD"));
+		
 		// 사용자 파라미터 userId, password
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String encryptPassword = KISA_SHA256.encrypt(password);
 
-		// db에서 해당 사용자의 정보 조회 (service, dao)
-
-		// 해당 사용자 정보를 이용하여 사용자가 보낸 userId, password가 일치하는지 검사
-		// --> userId : brown이고 password : brown1234라는 값일 때 통과, 그 이외 값은 불일치
+		/* 
+		 	
+		 	db에서 해당 사용자의 정보 조회 (service, dao)
+		 	해당 사용자 정보를 이용하여 사용자가 보낸 userId, password가 일치하는지 검사
+		 	--> userId : brown이고 password : brown1234라는 값일 때 통과, 그 이외 값은 불일치
+		
+		*/
 
 		UserVO userVO = userService.getUser(userId);
 
 		// 일치하면 (로그인성공) : main화면으로 이동
-		// f(userVO.getUserId().equals(userId) && userVO.getPass().equals(password)) {
+		// (userVO.getUserId().equals(userId) && userVO.getPass().equals(password)) {
 		if (userVO != null && encryptPassword.equals(userVO.getPass())) {
 
 			// rememberme 파라미터가 존재할 경우 userId, rememberme cookie를 설정해 준다.

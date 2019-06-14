@@ -15,7 +15,7 @@
 		$("#lang").val("${nation}");
 		$("#lang").on("change", function(){
 			var lang = $(this).val();
-			//location.href = "${pageContext.request.contextPath}/selectLocale?languege="+lang;
+			//location.href = "${cp}/selectLocale?languege="+lang;
 			$("#frm").submit();
 		});
 	});
@@ -26,7 +26,7 @@
 <%-- 로케일을 한국어로 설정 --%>
 
 <h2> select locale </h2>
-<form id="frm" method="post" action="${pageContext.request.contextPath}/selectLocale">
+<form id="frm" method="post" action="${cp}/selectLocale">
 	<select id="lang" name="lang">
 		<option value="ko">한국어</option>
 		<option value="en">english</option>

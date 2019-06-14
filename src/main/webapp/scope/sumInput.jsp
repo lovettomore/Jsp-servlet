@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/css/default.css" rel="stylesheet" type="text/css" >
+<link href="${cp}/css/default.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<div id="wrap">
@@ -17,7 +17,7 @@
 			</section>
 			<section id="contents">
 				<div class="loginForm">
-					<form action="${pageContext.request.contextPath}/sumCalculation" method="post">
+					<form action="${cp}/sumCalculation" method="post">
 						<table>
 							<tr>
 								<th>start<th>

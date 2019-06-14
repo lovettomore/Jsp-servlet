@@ -83,7 +83,7 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 수정</h2>
 						
-						<form id="frm" class="form-horizontal" action="${pageContext.request.contextPath}/userModify" enctype="multipart/form-data" method="post" role="form">
+						<form id="frm" class="form-horizontal" action="${cp}/userModify" enctype="multipart/form-data" method="post" role="form">
 							
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>

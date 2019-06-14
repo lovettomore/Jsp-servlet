@@ -45,11 +45,6 @@ public class UserFormController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
-		logger.debug("userForm doPost");
-		logger.debug("userid parameter : {}", request.getParameter("userId")); //잘 들어오넹
-		
 		
 		//사용자 보낸 파라미터를 사용해서 UserVO인스턴스를 만들어서
 		String userId = request.getParameter("userId");

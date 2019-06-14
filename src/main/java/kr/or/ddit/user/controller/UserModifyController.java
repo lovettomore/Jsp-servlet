@@ -41,9 +41,6 @@ public class UserModifyController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		logger.debug("userId parameter : {}", request.getParameter("userId"));
-		
 		String userId = request.getParameter("userId");
 		
 		//사용자 아이디로 사용자 정보를 조회
@@ -55,8 +52,6 @@ public class UserModifyController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		logger.debug("UserModifyController doPost");
 		
 		String userId = request.getParameter("userId");
 		String name = request.getParameter("name");

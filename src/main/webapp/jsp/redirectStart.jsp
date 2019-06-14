@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/css/default.css" rel="stylesheet" type="text/css" >
+<link href="${cp}/css/default.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 						2-1. response.sendRedirect("jsp/jsp/redirectTartget.jsp") : 클라이언트에게 리다이렉트 지시<br>
 						3. 웹 브라우저가 리다이렉트응답을 받고, 수신한 리다이렉트주소(/jsp/jsp/redirectTarget.jsp)를 웹브라우저 주소줄에 입력하여 두번째 요청을 보낸다.
 					</p>
-					<form action="${pageContext.request.contextPath}/jsp/redirectProcess.jsp">
+					<form action="${cp}/jsp/redirectProcess.jsp">
 						<p><input type="text" name="userId" id="userId" value="sally"></p>
 						<p><input type="submit" value="redirect"></p>
 					</form>
