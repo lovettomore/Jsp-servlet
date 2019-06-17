@@ -309,5 +309,3 @@ jsp: [jsp](https://gmlwjd9405.github.io/2018/11/03/jsp.html)<br>
 markdown: [markdown](https://gist.github.com/ihoneymon/652be052a0727ad59601)<br>
 stackEdit: [stackEdit](https://stackedit.io/editor)
 
-
-:tomato:
