@@ -584,4 +584,4 @@ class ARIAEngine {
 
 /*
  * Frontend class ARIA
- * Currently, it provides only a simple text.*/
+ * Currently, it provides only a simple text..*/

@@ -153,7 +153,7 @@ public class ARIAUtil {
 
 
 	/*
-	 *Aria 기본 복호화
+	 *Aria 기본 복호화.
 	 */
 	public static String ariaDecrypt(String strHex) 
 	throws InvalidKeyException, UnsupportedEncodingException  {
